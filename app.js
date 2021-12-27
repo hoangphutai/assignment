@@ -11,8 +11,12 @@ const DATABASE_Name = 'HoangPhuTaiDB'
 app.set('view engine', 'hbs')
 app.use(express.urlencoded({extended: true}))
 
-app.get('/',(req,res)=>{
-    res.render('index')
+app.get('/',async(req,res)=>{
+    //bring up data from mongo
+    const dbo = await getDatabase()
+    const results = await dbo.collection("Product").find({}).sort({price:-1}).limit(6).toArray()
+    //show on view.hbs
+    res.render('index',{products:results})
 })
 
 app.get('/insert',(req,res)=>{

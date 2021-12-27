@@ -7,17 +7,29 @@
     <title>View product</title>
 </head>
 <body>
-    <h1>View all product</h1>
-    <ul>
-        {{#each products}}
-            <li>
-                {{name}} -
-                {{price}} - 
-                <img src="{{picURL}}" width="150" height="100"> - 
+    {{!-- <h1>View all product</h1> --}}
+    <table border="1">
+        <caption align="top">All TOYS</caption>
+        <tr align="center" bgcolor="Yellow">
+            <td style="width:30%">Name</td>
+            <td style="width:20%">Price</td>
+            <td>Picture</td>
+            <td>Manage</td>
+        </tr>
+        {{# each products}}
+        <tr align="center">
+            <td>{{name}}</td>
+            <td>{{price}}</td>
+            <td><img src="{{picURL}}" width="150" height="100"></td>
+            <td>
                 <a onclick="return confirm('R u sure? ')" href="/delete?id={{_id}}">Delete</a>
                 <a href="/edit?id={{_id}}">Edit</a>
-            </li>
+            </td>
+        </tr>
         {{/each}}
+    </table>
+    <ul>
+        <li list-style-type="None" none;><a href="/insert">Insert Product</a></li>
     </ul>
 </body>
 </html>
