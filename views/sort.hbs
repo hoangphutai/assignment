@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>View product</title>
+    <title>Sort price</title>
 </head>
 <body>
     <table border="1">
@@ -13,25 +13,14 @@
             <td style="width:30%">Name</td>
             <td style="width:20%">Price</td>
             <td>Picture</td>
-            <td>Manage</td>
         </tr>
         {{# each products}}
         <tr align="center">
             <td>{{name}}</td>
             <td>{{price}}</td>
             <td><img src="{{picURL}}" width="150" height="100"></td>
-            <td>
-                <a onclick="return confirm('R u sure? ')" href="/delete?id={{_id}}">Delete</a>
-                <a href="/edit?id={{_id}}">Edit</a>
-            </td>
         </tr>
         {{/each}}
     </table>
-    <ul>
-        <li><a href="/insert">Insert Product</a></li>
-    </ul>
-    <ul>
-        <li><a href="/sort">Sort price</a></li>
-    </ul>
 </body>
 </html>

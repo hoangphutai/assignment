@@ -1,4 +1,5 @@
 const express = require('express')
+const async = require('hbs/lib/async')
 const { get } = require('http')
 const app = express()
 const { MongoClient,ObjectId } = require('mongodb')
@@ -21,6 +22,12 @@ app.get('/',async(req,res)=>{
 
 app.get('/insert',(req,res)=>{
     res.render('product')
+})
+
+app.get('/sort',async(req,res)=>{
+    const dbo = await getDatabase()
+    const sort = await dbo.collection("Product").find({}).sort({price:1}).toArray()
+    res.render('sort',{products:sort})
 })
 
 app.post('/edit',async(req,res)=>{
@@ -54,7 +61,7 @@ app.get('/delete',async(req,res)=>{
 app.get('/view',async(req,res)=>{
     //bring up data from mongo
     const dbo = await getDatabase()
-    const results = await dbo.collection("Product").find({}).sort({price:-1}).limit(6).toArray()
+    const results = await dbo.collection("Product").find({}).sort({price:-1}).toArray()
     //show on view.hbs
     res.render('view',{products:results})
 })

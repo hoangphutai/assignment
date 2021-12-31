@@ -4,22 +4,33 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="mystyle.css"/>
     <title>Edit product</title>
 </head>
 <body>
-    <h2>new product</h2>
-    <form action="/edit" method="post">
-        <input type="hidden" name="txtId" value="{{product._id}}">
-        Name: <input type = "text" name="txtName" id="txtName" value="{{product.name}}">
-        <br>
-        Price: <input type = "text" name="txtPrice" id="txtPrice" value="{{product.price}}">
-        <span style="color: red;">{{error}}</span>
-        <br>
-        Picture URL:
-        <input type="text" name="txtPicURL" id="txtPicURL" size="100" value="{{product.picURL}}">
-        <img src="{{product.picURL}}" width="150" height="100">
-        <br>
-        <input type="submit" value="Update">
-    </form>
+    <div class="container">
+        <h2 class="redText">Edit product</h2>
+        <form action="/edit" method="post">
+            <div class="form-group">
+                <input type="hidden" name="txtId" value="{{product._id}}">
+                <label for="txtName">Name:</label>
+                <input class="form-control" type = "text" name="txtName" id="txtName" value="{{product.name}}" size="70">
+            </div>
+            <div class="form-group">
+                <label for="txtPrice">Price:</label>
+                <input class="form-control" type = "text" name="txtPrice" id="txtPrice" value="{{product.price}}" size="70">
+                <span style="color: red;">{{error}}</span>
+            </div>
+            <div>
+                <label for="txtPicURL">Picture URL:</label>
+                <input class="form-control" type="text" name="txtPicURL" id="txtPicURL" size="100" value="{{product.picURL}}">
+                <img src="{{product.picURL}}" width="150" height="100">
+            </div>
+            <div class="text-center">
+                <input  type="submit" class="btn btn-primary" value="Update">
+            </div>
+        </form>
+    </div>
 </body>
 </html>
